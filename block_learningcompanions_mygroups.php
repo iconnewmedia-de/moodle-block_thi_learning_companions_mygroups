@@ -91,8 +91,8 @@ class block_learningcompanions_mygroups extends block_base {
      *
      * @return string[] Array of pages and permissions.
      */
-    public function applicable_formats() {
-        return array(
-        );
+    public function applicable_formats()
+    {
+        return array('site' => true, 'course' => true, 'my' => true);
     }
 }
