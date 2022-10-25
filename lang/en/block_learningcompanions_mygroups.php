@@ -17,7 +17,7 @@
 /**
  * Plugin strings are defined here.
  *
- * @package     block_learningcompanions_mygroups
+ * @package     block_block_learningcompanions_mygroups
  * @category    string
  * @copyright   2022 ICON Vernetzte Kommunikation GmbH <info@iconnewmedia.de>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -26,3 +26,4 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Learning Companions - My Groups';
+$string['learningcompanions_settings'] = 'Block learningcompanions_mygroups';
