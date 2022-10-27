@@ -29,11 +29,9 @@ class block_learningcompanions_mygroups_edit_form extends block_edit_form {
      * @param MoodleQuickForm $mform The form being built.
      */
     protected function specific_definition($mform) {
-
-        // Section header title.
         $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
 
-        // Please keep in mind that all elements defined here must start with 'config_'.
-
+        $mform->addElement('text', 'config_title', get_string('configtitle', 'block_learningcompanions_mygroups'));
+        $mform->setType('config_title', PARAM_TEXT);
     }
 }

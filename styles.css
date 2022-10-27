@@ -1,0 +1,45 @@
+.block_learningcompanions_mygroups_all_groups {
+    margin-left: 6px;
+}
+.block_learningcompanions_mygroups_group {
+    display: inline-flex;
+    margin-bottom: 20px;
+}
+.block_learningcompanions_mygroups_group_picture {
+    margin-right: 10px;
+}
+.block_learningcompanions_mygroups_group_center {
+    display: block;
+}
+.block_learningcompanions_mygroups_group_postinfos {
+    margin-left: 10px;
+    display: block;
+}
+.block_learningcompanions_mygroups_group_title {
+    font-style: italic;
+    font-weight: 600;
+}
+.block_learningcompanions_mygroups_group_lastpost_time {
+    color: #5AC1A2;
+}
+.block_learningcompanions_mygroups_group_newposts_count {
+    margin-top: 3px;
+}
+.block_learningcompanions_mygroups_group_newposts_count_circle {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding-top: 3px;
+    background: #00A070;
+    border: 0;
+    color: #ffffff;
+    text-align: center;
+    display: block;
+    font-size: 12px;
+}
+.block_learningcompanions_mygroups_allgroups_link {
+    color: #EB9C68;
+}
+.block_learningcompanions_chevron {
+    color: #EB9C68;
+}

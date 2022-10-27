@@ -23,53 +23,33 @@
  */
 class block_learningcompanions_mygroups extends block_base {
 
-    /**
-     * Initializes class member variables.
-     */
     public function init() {
-        // Needed by Moodle to differentiate between blocks.
         $this->title = get_string('pluginname', 'block_learningcompanions_mygroups');
     }
 
-    /**
-     * Returns the block contents.
-     *
-     * @return stdClass The block contents.
-     */
-    public function get_content() {
-
-        if ($this->content !== null) {
-            return $this->content;
-        }
-
-        if (empty($this->instance)) {
-            $this->content = '';
-            return $this->content;
-        }
-
-        $this->content = new stdClass();
-        $this->content->items = array();
-        $this->content->icons = array();
-        $this->content->footer = '';
-
-        if (!empty($this->config->text)) {
-            $this->content->text = $this->config->text;
-        } else {
-            $text = 'Please define the content text in /blocks/learningcompanions_mygroups/block_learningcompanions_mygroups.php.';
-            $this->content->text = $text;
-        }
-
-        return $this->content;
+    public function has_config() {
+        return true;
     }
 
-    /**
-     * Defines configuration data.
-     *
-     * The function is called immediately after init().
-     */
-    public function specialization() {
+    public function hide_header() {
+        return false;
+    }
 
-        // Load user defined title and make sure it's never empty.
+    function instance_allow_multiple() {
+        return false;
+    }
+
+    public function applicable_formats() {
+        return array(
+            'admin' => true,
+            'site' => true,
+            'course' => true,
+            'mod' => true,
+            'my' => true
+        );
+    }
+
+    public function specialization() {
         if (empty($this->config->title)) {
             $this->title = get_string('pluginname', 'block_learningcompanions_mygroups');
         } else {
@@ -77,22 +57,27 @@ class block_learningcompanions_mygroups extends block_base {
         }
     }
 
-    /**
-     * Enables global configuration of the block in settings.php.
-     *
-     * @return bool True if the global configuration is enabled.
-     */
-    public function has_config() {
-        return true;
-    }
+    public function get_content() {
+        global $CFG, $OUTPUT;
 
-    /**
-     * Sets the applicable formats for the block.
-     *
-     * @return string[] Array of pages and permissions.
-     */
-    public function applicable_formats()
-    {
-        return array('site' => true, 'course' => true, 'my' => true);
+        require_once $CFG->dirroot.'/local/learningcompanions/lib.php';
+
+        if ($this->content !== null) {
+            return $this->content;
+        }
+
+        $this->content = new stdClass();
+
+        if (empty($this->instance)) {
+            $this->content = '';
+            return $this->content;
+        }
+
+        $groups = \local_learningcompanions\groups::get_all_groups();
+
+        $this->content->text = $OUTPUT->render_from_template('block_learningcompanions_mygroups/main',
+            array('groups' => array_values($groups)));
+
+        return $this->content;
     }
 }

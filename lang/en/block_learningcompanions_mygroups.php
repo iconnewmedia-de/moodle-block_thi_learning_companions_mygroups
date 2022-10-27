@@ -27,3 +27,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Learning Companions - My Groups';
 $string['learningcompanions_settings'] = 'Block learningcompanions_mygroups';
+$string['configtitle'] = 'Block title';
+
+$string['allgroups'] = 'All groups';
