@@ -25,11 +25,14 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-if ($hassiteconfig) {
+if ($ADMIN->fulltree) {
     // phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedIf
 
     $settings = new admin_settingpage( 'block_learningcompanions_mygroups', get_string('learningcompanions_settings', 'block_learningcompanions_mygroups') );
 
-    $ADMIN->add('root', new admin_category('lcconfig', get_string('adminareaname', 'local_learningcompanions')));
+    $category = new admin_category('lcconfig', get_string('adminareaname', 'local_learningcompanions'));
+    if (!$ADMIN->locate('lcconfig')) { // avoids "duplicate admin page name" warnings
+        $ADMIN->add('root', $category);
+    }
     $ADMIN->add('lcconfig', $settings);
 }
