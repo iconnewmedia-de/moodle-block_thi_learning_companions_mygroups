@@ -35,4 +35,5 @@ if ($ADMIN->fulltree) {
         $ADMIN->add('root', $category);
     }
     $ADMIN->add('lcconfig', $settings);
+    $settings = null;
 }
