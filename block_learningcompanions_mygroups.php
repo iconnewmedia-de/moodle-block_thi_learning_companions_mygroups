@@ -76,7 +76,8 @@ class block_learningcompanions_mygroups extends block_base {
         $groups = \local_learningcompanions\groups::get_all_groups();
 
         $this->content->text = $OUTPUT->render_from_template('block_learningcompanions_mygroups/main',
-            array('groups' => array_values($groups)));
+            array('groups' => array_values(array_slice($groups, 0, 3)), // ICTODO: Groups should be sorted by last post
+                  'allmygroupsurl' => $CFG->wwwroot.'/local/learningcompanions/group/index.php'));
 
         return $this->content;
     }

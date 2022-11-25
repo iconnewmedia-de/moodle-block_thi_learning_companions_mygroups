@@ -1,7 +1,13 @@
 .block_learningcompanions_mygroups_all_groups {
     margin-left: 6px;
 }
-.block_learningcompanions_mygroups_group {
+.block_learningcompanions_mygroups_groups {
+    display: block;
+}
+.block_learningcompanions_mygroups_groups {
+    display: block;
+}
+.block_learningcompanions_mygroups_group_content {
     display: inline-flex;
     margin-bottom: 20px;
 }
@@ -29,7 +35,7 @@
     border-radius: 50%;
     width: 20px;
     height: 20px;
-    padding-top: 3px;
+    padding-top: 1px;
     background: #00A070;
     border: 0;
     color: #ffffff;
