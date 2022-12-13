@@ -58,7 +58,7 @@ class block_learningcompanions_mygroups extends block_base {
     }
 
     public function get_content() {
-        global $CFG, $OUTPUT;
+        global $CFG, $OUTPUT, $USER;
 
         require_once $CFG->dirroot.'/local/learningcompanions/lib.php';
 
@@ -73,10 +73,15 @@ class block_learningcompanions_mygroups extends block_base {
             return $this->content;
         }
 
-        $groups = \local_learningcompanions\groups::get_all_groups();
+        $groups = \local_learningcompanions\groups::get_groups_of_user($USER->id);
+        $groups = array_values(array_slice($groups, 0, 3));
+        foreach($groups as $group) {
+            $group->comments_since_last_visit = \local_learningcompanions\groups::count_comments_since_last_visit($group->id);
+            $group->has_new_comments = $group->comments_since_last_visit > 0;
+        }
 
         $this->content->text = $OUTPUT->render_from_template('block_learningcompanions_mygroups/main',
-            array('groups' => array_values(array_slice($groups, 0, 3)), // ICTODO: Groups should be sorted by last post
+            array('groups' => $groups, // ICTODO: Groups should be sorted by last post
                   'allmygroupsurl' => $CFG->wwwroot.'/local/learningcompanions/group/index.php'));
 
         return $this->content;

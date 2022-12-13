@@ -14,6 +14,13 @@
 .block_learningcompanions_mygroups_group_picture {
     margin-right: 10px;
 }
+.block_learningcompanions_mygroups_group_picture div {
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
 .block_learningcompanions_mygroups_group_center {
     display: block;
 }

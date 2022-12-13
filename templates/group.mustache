@@ -1,11 +1,15 @@
 <div class="block_learningcompanions_mygroups_group">
     <div class="block_learningcompanions_mygroups_group_content">
         <div class="block_learningcompanions_mygroups_group_picture">
-            X
+            <a href="{{cfg.wwwroot}}/local/learningcompanions/chat.php?groupid={{id}}">
+                <div style="background-image:url({{imageurl}});"></div>
+            </a>
         </div>
         <div class="block_learningcompanions_mygroups_group_center">
             <div class="block_learningcompanions_mygroups_group_title">
-                {{name}}
+                <a href="{{cfg.wwwroot}}/local/learningcompanions/chat.php?groupid={{id}}">
+                    {{name}}
+                </a>
             </div>
             <div class="block_learningcompanions_mygroups_group_lastpost">
                 ...
@@ -13,12 +17,14 @@
         </div>
         <div class="block_learningcompanions_mygroups_group_postinfos">
             <div class="block_learningcompanions_mygroups_group_lastpost_time">
-                09:00
+                {{latestcomment_dmY}}
             </div>
             <div class="block_learningcompanions_mygroups_group_newposts_count">
+                {{#has_new_comments}}
                 <span class="block_learningcompanions_mygroups_group_newposts_count_circle">
-                    2
+                    {{comments_since_last_visit}}
                 </span>
+                {{/has_new_comments}}
             </div>
         </div>
     </div>
