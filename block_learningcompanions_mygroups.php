@@ -78,6 +78,7 @@ class block_learningcompanions_mygroups extends block_base {
         foreach($groups as $group) {
             $group->comments_since_last_visit = \local_learningcompanions\groups::count_comments_since_last_visit($group->id);
             $group->has_new_comments = $group->comments_since_last_visit > 0;
+            $group->lastcomment = substr(strip_tags($group->get_last_comment()), 0, 100);
         }
 
         $this->content->text = $OUTPUT->render_from_template('block_learningcompanions_mygroups/main',
