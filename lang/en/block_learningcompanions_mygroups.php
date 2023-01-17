@@ -30,3 +30,4 @@ $string['learningcompanions_settings'] = 'Block learningcompanions_mygroups';
 $string['configtitle'] = 'Block title';
 
 $string['allgroups'] = 'All groups';
+$string['groupmeup'] = 'Group me up';

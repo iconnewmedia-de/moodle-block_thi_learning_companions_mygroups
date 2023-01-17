@@ -58,7 +58,7 @@ class block_learningcompanions_mygroups extends block_base {
     }
 
     public function get_content() {
-        global $CFG, $OUTPUT, $USER;
+        global $CFG, $OUTPUT, $USER, $COURSE;
 
         require_once $CFG->dirroot.'/local/learningcompanions/lib.php';
 
@@ -80,10 +80,15 @@ class block_learningcompanions_mygroups extends block_base {
             $group->has_new_comments = $group->comments_since_last_visit > 0;
             $group->lastcomment = substr(strip_tags($group->get_last_comment()), 0, 100);
         }
-
+        $groupmeupURL = $CFG->wwwroot.'/local/learningcompanions/group/search.php';
+        if ($COURSE->id > 1) {
+            $groupmeupURL .= '?courseid=' . intval($COURSE->id);
+        }
         $this->content->text = $OUTPUT->render_from_template('block_learningcompanions_mygroups/main',
             array('groups' => $groups, // ICTODO: Groups should be sorted by last post
-                  'allmygroupsurl' => $CFG->wwwroot.'/local/learningcompanions/group/index.php'));
+                  'allmygroupsurl' => $CFG->wwwroot.'/local/learningcompanions/group/index.php',
+                    'groupmeupurl' => $groupmeupURL
+                ));
 
         return $this->content;
     }
