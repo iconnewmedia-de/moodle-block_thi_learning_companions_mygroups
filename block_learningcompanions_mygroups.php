@@ -74,7 +74,7 @@ class block_learningcompanions_mygroups extends block_base {
         }
 
         $groups = \local_learningcompanions\groups::get_groups_of_user($USER->id);
-        $groups = array_values(array_slice($groups, 0, 3));
+//        $groups = array_values(array_slice($groups, 0, 3));
         foreach($groups as $group) {
             $group->comments_since_last_visit = \local_learningcompanions\groups::count_comments_since_last_visit($group->id);
             $group->has_new_comments = $group->comments_since_last_visit > 0;
