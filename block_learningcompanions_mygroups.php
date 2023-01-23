@@ -22,7 +22,7 @@
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_learningcompanions_mygroups extends block_base {
-
+    protected static $groupLimit = 3; // only show that many groups upon loading the page
     public function init() {
         $this->title = get_string('pluginname', 'block_learningcompanions_mygroups');
     }
@@ -74,7 +74,14 @@ class block_learningcompanions_mygroups extends block_base {
         }
 
         $groups = \local_learningcompanions\groups::get_groups_of_user($USER->id);
-//        $groups = array_values(array_slice($groups, 0, 3));
+        $firstgroups = array_values(array_slice($groups, 0, self::$groupLimit));
+        if (count($groups) > self::$groupLimit) {
+            $lastgroups = array_values(array_slice($groups, self::$groupLimit));
+        } else {
+            $lastgroups = [];
+        }
+        $moregroupsCount = count($lastgroups);
+        $hasmoregroups = $moregroupsCount > 0;
         foreach($groups as $group) {
             $group->comments_since_last_visit = \local_learningcompanions\groups::count_comments_since_last_visit($group->id);
             $group->has_new_comments = $group->comments_since_last_visit > 0;
@@ -85,9 +92,12 @@ class block_learningcompanions_mygroups extends block_base {
             $groupmeupURL .= '?courseid=' . intval($COURSE->id);
         }
         $this->content->text = $OUTPUT->render_from_template('block_learningcompanions_mygroups/main',
-            array('groups' => $groups, // ICTODO: Groups should be sorted by last post
+            array('groups' => $firstgroups, // ICTODO: Groups should be sorted by last post
+                'moregroups' => $lastgroups,
                   'allmygroupsurl' => $CFG->wwwroot.'/local/learningcompanions/group/index.php',
-                    'groupmeupurl' => $groupmeupURL
+                    'groupmeupurl' => $groupmeupURL,
+                'moregroupscount' => $moregroupsCount,
+                'hasmoregroups' => $hasmoregroups
                 ));
 
         return $this->content;

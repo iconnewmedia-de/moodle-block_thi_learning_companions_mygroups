@@ -4,6 +4,13 @@
             {{#groups}}
                 {{> block_learningcompanions_mygroups/group }}
             {{/groups}}
+            {{#hasmoregroups}}
+            <a href="#" onclick="$('#block_learningcompanions_more').slideDown();$(this).hide();" id="block_lc_showall"><i class="fa fa-chevron-right block_learningcompanions_chevron"></i> {{#str}}showmore, block_learningcompanions_mygroups, {{moregroupscount}}{{/str}}</a>
+            <div id="block_learningcompanions_more" style="display:none">{{#moregroups}}
+            {{> block_learningcompanions_mygroups/group }}
+            {{/moregroups}}<a href="#" onclick="$('#block_learningcompanions_more').slideUp();$('#block_lc_showall').show();"><i class="fa fa-chevron-right block_learningcompanions_chevron" style="transform: rotate(-90deg)"></i> {{#str}}showless, block_learningcompanions_mygroups{{/str}}</a>
+            </div>
+            {{/hasmoregroups}}
         </div>
 <!--        <div>-->
 <!--            <i class="fa fa-chevron-right block_learningcompanions_chevron"></i>-->

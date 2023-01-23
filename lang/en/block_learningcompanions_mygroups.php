@@ -31,3 +31,5 @@ $string['configtitle'] = 'Block title';
 
 $string['allgroups'] = 'All groups';
 $string['groupmeup'] = 'Group me up';
+$string['showmore'] = 'Show {$a} more groups';
+$string['showless'] = 'Show less';
