@@ -91,13 +91,34 @@ class block_learningcompanions_mygroups extends block_base {
         if ($COURSE->id > 1) {
             $groupmeupURL .= '?courseid=' . intval($COURSE->id);
         }
+        if (has_capability('local/learningcompanions:group_manage', context_system::instance())) {
+            $mayManageGroups = true;
+        } else {
+            $mayManageGroups = false;
+        }
+        $noGroupsHelp = new stdClass();
+        $noGroupsHelp->title = get_string('groups_help_title', 'block_learningcompanions_mygroups');
+        $noGroupsHelp->url = "";
+        $noGroupsHelp->linktext = "";
+        $noGroupsHelp->text = get_string('groups_help_text', 'block_learningcompanions_mygroups');
+        $noGroupsHelp->icon = [
+            "attributes" => [
+                ["name" => "class", "value" => "iconhelp"],
+                ["name" => "src", "value" => "../../../pix/help.svg"],
+                ["name" => "alt", "value" => "Help icon"]
+            ]
+        ];
+
         $this->content->text = $OUTPUT->render_from_template('block_learningcompanions_mygroups/main',
             array('groups' => $firstgroups, // ICTODO: Groups should be sorted by last post
                 'moregroups' => $lastgroups,
                   'allmygroupsurl' => $CFG->wwwroot.'/local/learningcompanions/group/index.php',
                     'groupmeupurl' => $groupmeupURL,
                 'moregroupscount' => $moregroupsCount,
-                'hasmoregroups' => $hasmoregroups
+                'hasmoregroups' => $hasmoregroups,
+                'maymanagegroups' => $mayManageGroups,
+                'no_groups_help' => $noGroupsHelp,
+                'cfg' => $CFG
                 ));
 
         return $this->content;

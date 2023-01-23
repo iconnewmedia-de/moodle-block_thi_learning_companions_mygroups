@@ -4,6 +4,11 @@
             {{#groups}}
                 {{> block_learningcompanions_mygroups/group }}
             {{/groups}}
+            {{^groups}}
+            <span class="learningcompanions_info">{{#str}}no_groups_yet, block_learningcompanions_mygroups{{/str}}{{#no_groups_help}}
+                            {{>core/help_icon}}
+                        {{/no_groups_help}}</span>
+            {{/groups}}
             {{#hasmoregroups}}
             <a href="#" onclick="$('#block_learningcompanions_more').slideDown();$(this).hide();" id="block_lc_showall"><i class="fa fa-chevron-right block_learningcompanions_chevron"></i> {{#str}}showmore, block_learningcompanions_mygroups, {{moregroupscount}}{{/str}}</a>
             <div id="block_learningcompanions_more" style="display:none">{{#moregroups}}
@@ -11,6 +16,7 @@
             {{/moregroups}}<a href="#" onclick="$('#block_learningcompanions_more').slideUp();$('#block_lc_showall').show();"><i class="fa fa-chevron-right block_learningcompanions_chevron" style="transform: rotate(-90deg)"></i> {{#str}}showless, block_learningcompanions_mygroups{{/str}}</a>
             </div>
             {{/hasmoregroups}}
+            <hr>
         </div>
 <!--        <div>-->
 <!--            <i class="fa fa-chevron-right block_learningcompanions_chevron"></i>-->
@@ -23,6 +29,10 @@
             <span class="block_learningcompanions_mygroups_groupmeup">
                 <a href="{{groupmeupurl}}" class="block_learningcompanions_mygroups_groupmeup_link">{{#str}}groupmeup, block_learningcompanions_mygroups{{/str}}</a>
             </span>
+            {{#maymanagegroups}}
+            <hr>
+            <a href="{{cfg.wwwroot}}/admin/tool/learningcompanions/index.php"><i class="fa fa-chevron-right block_learningcompanions_chevron"></i> {{#str}}to_admin_area, block_learningcompanions_mygroups{{/str}}</a>
+            {{/maymanagegroups}}
         </div>
     </div>
 </div>

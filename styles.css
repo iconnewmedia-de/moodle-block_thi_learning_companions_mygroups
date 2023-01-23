@@ -56,3 +56,19 @@
 .block_learningcompanions_chevron {
     color: #EB9C68;
 }
+
+
+/* In Webseite enthaltenes Stil-Dokument #6 | http://thi406.local/local/learningcompanions/group/search.php */
+
+.learningcompanions_info {
+    border: 1px solid var(--secondary);
+    margin: 0;
+    padding: 5px;
+    background: var(--light);
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    font-size: 0.9em;
+    font-style: italic;
+    margin-bottom: 10px;
+}

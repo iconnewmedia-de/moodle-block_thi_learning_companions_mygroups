@@ -33,3 +33,7 @@ $string['allgroups'] = 'All groups';
 $string['groupmeup'] = 'Group me up';
 $string['showmore'] = 'Show {$a} more groups';
 $string['showless'] = 'Show less';
+$string['to_admin_area'] = 'Go to admin area';
+$string['no_groups_yet'] = 'You don\'t have any groups yet.';
+$string['groups_help_title'] = 'Hook up with others';
+$string['groups_help_text'] = 'You can join groups to communicate with fellow students. Just click on »group me up« to create or join a group.';
