@@ -61,6 +61,7 @@ class block_learningcompanions_mygroups extends block_base {
         global $CFG, $OUTPUT, $USER, $COURSE;
 
         require_once $CFG->dirroot.'/local/learningcompanions/lib.php';
+        require_once $CFG->dirroot.'/local/learningcompanions/classes/mentors.php';
 
         if ($this->content !== null) {
             return $this->content;
@@ -73,7 +74,7 @@ class block_learningcompanions_mygroups extends block_base {
             return $this->content;
         }
 
-        $groups = \local_learningcompanions\groups::get_groups_of_user($USER->id);
+        $groups = \local_learningcompanions\groups::get_groups_of_user($USER->id); // ICTODO: Check why this changes the PAGE context to context_system
         $firstgroups = array_values(array_slice($groups, 0, self::$groupLimit));
         if (count($groups) > self::$groupLimit) {
             $lastgroups = array_values(array_slice($groups, self::$groupLimit));
@@ -108,6 +109,8 @@ class block_learningcompanions_mygroups extends block_base {
                 ["name" => "alt", "value" => "Help icon"]
             ]
         ];
+
+        $qualifiedAsMentorForCourses = \local_learningcompanions\mentors::get_mentor_qualifications();
 
         $this->content->text = $OUTPUT->render_from_template('block_learningcompanions_mygroups/main',
             array('groups' => $firstgroups, // ICTODO: Groups should be sorted by last post
