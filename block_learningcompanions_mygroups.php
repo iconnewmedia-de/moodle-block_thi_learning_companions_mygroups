@@ -110,7 +110,7 @@ class block_learningcompanions_mygroups extends block_base {
             ]
         ];
 
-        $qualifiedAsMentorForCourses = \local_learningcompanions\mentors::get_mentor_qualifications();
+        $qualifiedAsMentor = \local_learningcompanions\mentors::get_all_mentorship_qualifications($USER->id);
 
         $this->content->text = $OUTPUT->render_from_template('block_learningcompanions_mygroups/main',
             array('groups' => $firstgroups, // ICTODO: Groups should be sorted by last post
@@ -121,6 +121,7 @@ class block_learningcompanions_mygroups extends block_base {
                 'hasmoregroups' => $hasmoregroups,
                 'maymanagegroups' => $mayManageGroups,
                 'no_groups_help' => $noGroupsHelp,
+                'qualifiedasmentor' => $qualifiedAsMentor,
                 'cfg' => $CFG
                 ));
 

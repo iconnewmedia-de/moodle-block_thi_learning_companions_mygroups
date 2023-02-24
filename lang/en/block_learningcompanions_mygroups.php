@@ -40,3 +40,5 @@ $string['groups_help_text'] = 'You can join groups to communicate with fellow st
 $string['my_mentors'] = 'My mentors';
 $string['search_for_mentors'] = 'Search for mentors';
 $string['my_questions_to_mentors'] = 'My questions';
+$string['my_mentorship'] = 'My mentorship';
+$string['mentorship_overview'] = 'Go to overview';
