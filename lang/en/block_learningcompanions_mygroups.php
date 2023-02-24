@@ -42,3 +42,4 @@ $string['search_for_mentors'] = 'Search for mentors';
 $string['my_questions_to_mentors'] = 'My questions';
 $string['my_mentorship'] = 'My mentorship';
 $string['mentorship_overview'] = 'Go to overview';
+$string['mentorship_manage'] = 'Manage mentorship(s)';
