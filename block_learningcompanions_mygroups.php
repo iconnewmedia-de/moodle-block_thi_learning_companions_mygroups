@@ -76,6 +76,7 @@ class block_learningcompanions_mygroups extends block_base {
 
         $groups = \local_learningcompanions\groups::get_groups_of_user($USER->id); // ICTODO: Check why this changes the PAGE context to context_system
         $firstgroups = array_values(array_slice($groups, 0, self::$groupLimit));
+
         if (count($groups) > self::$groupLimit) {
             $lastgroups = array_values(array_slice($groups, self::$groupLimit));
         } else {
@@ -86,11 +87,15 @@ class block_learningcompanions_mygroups extends block_base {
         foreach($groups as $group) {
             $group->comments_since_last_visit = \local_learningcompanions\groups::count_comments_since_last_visit($group->id);
             $group->has_new_comments = $group->comments_since_last_visit > 0;
-            $group->lastcomment = substr(strip_tags($group->get_last_comment()), 0, 100);
+            $lastcomment = strip_tags($group->get_last_comment());
+            $group->lastcomment = $lastcomment;
+            if (strlen($lastcomment) > 100) {
+                $group->lastcomment = substr($lastcomment, 0, 97).'...';
+            }
         }
         $groupmeupURL = $CFG->wwwroot.'/local/learningcompanions/group/search.php';
         if ($COURSE->id > 1) {
-            $groupmeupURL .= '?courseid=' . intval($COURSE->id);
+            $groupmeupURL .= '?courseid=' . (int)$COURSE->id;
         }
         if (has_capability('local/learningcompanions:group_manage', context_system::instance())) {
             $mayManageGroups = true;

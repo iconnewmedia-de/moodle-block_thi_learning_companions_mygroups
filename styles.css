@@ -10,6 +10,7 @@
 .block_learningcompanions_mygroups_group_content {
     display: inline-flex;
     margin-bottom: 20px;
+    width: 100%;
 }
 .block_learningcompanions_mygroups_group_picture {
     margin-right: 10px;
@@ -23,6 +24,8 @@
 }
 .block_learningcompanions_mygroups_group_center {
     display: block;
+    max-width: 110px;
+    width: 100px;
 }
 .block_learningcompanions_mygroups_group_postinfos {
     margin-left: 10px;
@@ -31,6 +34,11 @@
 .block_learningcompanions_mygroups_group_title {
     font-style: italic;
     font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    display: inline-block;
 }
 .block_learningcompanions_mygroups_group_lastpost_time {
     color: #5AC1A2;
