@@ -2,19 +2,20 @@
     <div class="block_learningcompanions_mygroups_group_content">
         <div class="block_learningcompanions_mygroups_group_picture">
             <a href="{{cfg.wwwroot}}/local/learningcompanions/chat.php?groupid={{id}}">
-                <div style="background-image:url({{imageurl}});"></div>
+            <div style="background-image:url({{imageurl}});"></div>
             </a>
         </div>
         <div class="block_learningcompanions_mygroups_group_center">
-            <div class="block_learningcompanions_mygroups_group_title">
-                <a href="{{cfg.wwwroot}}/local/learningcompanions/chat.php?groupid={{id}}">
+                <div class="block_learningcompanions_mygroups_group_title">
+                    <a title="{{name}}" href="{{cfg.wwwroot}}/local/learningcompanions/chat.php?groupid={{id}}">
                     {{name}}
-                </a>
+                    </a>
+                </div>
+                <div class="block_learningcompanions_mygroups_group_lastpost">
+                            {{lastcomment}}
+                </div>
             </div>
-            <div class="block_learningcompanions_mygroups_group_lastpost">
-                {{lastcomment}}
-            </div>
-        </div>
+
         <div class="block_learningcompanions_mygroups_group_postinfos">
             <div class="block_learningcompanions_mygroups_group_lastpost_time">
                 {{latestcomment_dmY}}
