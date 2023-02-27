@@ -110,19 +110,21 @@ class block_learningcompanions_mygroups extends block_base {
             ]
         ];
 
-        $qualifiedAsMentorForCourses = \local_learningcompanions\mentors::get_mentor_qualifications();
+        $qualifiedAsMentor = \local_learningcompanions\mentors::is_qualified_as_mentor($USER->id);
 
         $this->content->text = $OUTPUT->render_from_template('block_learningcompanions_mygroups/main',
             array('groups' => $firstgroups, // ICTODO: Groups should be sorted by last post
                 'moregroups' => $lastgroups,
-                  'allmygroupsurl' => $CFG->wwwroot.'/local/learningcompanions/group/index.php',
-                    'groupmeupurl' => $groupmeupURL,
+                'allmygroupsurl' => $CFG->wwwroot.'/local/learningcompanions/group/index.php',
+                'groupmeupurl' => $groupmeupURL,
                 'moregroupscount' => $moregroupsCount,
                 'hasmoregroups' => $hasmoregroups,
                 'maymanagegroups' => $mayManageGroups,
                 'no_groups_help' => $noGroupsHelp,
+                'qualifiedasmentor' => $qualifiedAsMentor,
                 'cfg' => $CFG
-                ));
+                )
+        );
 
         return $this->content;
     }

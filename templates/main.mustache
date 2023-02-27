@@ -34,5 +34,27 @@
             <a href="{{cfg.wwwroot}}/admin/tool/learningcompanions/index.php"><i class="fa fa-chevron-right block_learningcompanions_chevron"></i> {{#str}}to_admin_area, block_learningcompanions_mygroups{{/str}}</a>
             {{/maymanagegroups}}
         </div>
+        <div class="block_learningcompanions_mygroups_mentors mt-5 mb-3">
+            <h5 class="mb-3">{{#str}}my_mentors, block_learningcompanions_mygroups{{/str}}</h5>
+            <span class="block_learningcompanions_mygroups_askmentors">
+                <a href="{{cfg.wwwroot}}/local/learningcompanions/mentor/my_questions_to_mentors.php"><i class="fa fa-chevron-right block_learningcompanions_chevron"></i> {{#str}}my_questions_to_mentors, block_learningcompanions_mygroups{{/str}}</a>
+            </span>
+                <hr>
+                <span class="block_learningcompanions_mygroups_findmentors">
+                <a href="{{cfg.wwwroot}}/local/learningcompanions/mentor/search.php"><i class="fa fa-chevron-right block_learningcompanions_chevron"></i> {{#str}}search_for_mentors, block_learningcompanions_mygroups{{/str}}</a>
+            </span>
+        </div>
+        {{#qualifiedasmentor}}
+        <div class="block_learningcompanions_mygroups_mentorship mt-5 mb-3">
+            <h5 class="mb-3">{{#str}}my_mentorship, block_learningcompanions_mygroups{{/str}}</h5>
+            <span class="block_learningcompanions_mygroups_askmentors">
+                <a href="{{cfg.wwwroot}}/local/learningcompanions/mentor/manage.php"><i class="fa fa-chevron-right block_learningcompanions_chevron"></i> {{#str}}mentorship_manage, block_learningcompanions_mygroups{{/str}}</a>
+            </span>
+            <hr>
+            <span class="block_learningcompanions_mygroups_askmentors">
+                <a href="{{cfg.wwwroot}}/local/learningcompanions/mentor/mentor_questions_overview.php"><i class="fa fa-chevron-right block_learningcompanions_chevron"></i> {{#str}}mentorship_overview, block_learningcompanions_mygroups{{/str}}</a>
+            </span>
+        </div>
+        {{/qualifiedasmentor}}
     </div>
 </div>
