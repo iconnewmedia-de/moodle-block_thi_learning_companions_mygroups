@@ -46,18 +46,6 @@
 .block_learningcompanions_mygroups_group_newposts_count {
     margin-top: 3px;
 }
-.block_learningcompanions_mygroups_group_newposts_count_circle {
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    padding-top: 1px;
-    background: #00A070;
-    border: 0;
-    color: #ffffff;
-    text-align: center;
-    display: block;
-    font-size: 12px;
-}
 .block_learningcompanions_mygroups_allgroups_link {
     color: #EB9C68;
 }
