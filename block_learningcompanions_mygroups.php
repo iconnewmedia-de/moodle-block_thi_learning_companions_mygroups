@@ -87,7 +87,9 @@ class block_learningcompanions_mygroups extends block_base {
         foreach($groups as $group) {
             $group->comments_since_last_visit = \local_learningcompanions\groups::count_comments_since_last_visit($group->id);
             $group->has_new_comments = $group->comments_since_last_visit > 0;
-            $lastcomment = strip_tags($group->get_last_comment());
+            $lastcomment = strip_tags($group->get_last_comment(), '<img>');
+            // replace any img tags with an img icon
+            $lastcomment = preg_replace('/<img[^>]+>/i', '<i class="fa fa-file-image-o"></i>', $lastcomment);
             $group->lastcomment = $lastcomment;
             if (strlen($lastcomment) > 100) {
                 $group->lastcomment = substr($lastcomment, 0, 97).'...';
@@ -118,7 +120,8 @@ class block_learningcompanions_mygroups extends block_base {
         $qualifiedAsMentor = \local_learningcompanions\mentors::is_qualified_as_mentor($USER->id);
 
         $this->content->text = $OUTPUT->render_from_template('block_learningcompanions_mygroups/main',
-            array('groups' => $firstgroups, // ICTODO: Groups should be sorted by last post
+            [
+                'groups' => $firstgroups, // ICTODO: Groups should be sorted by last post
                 'moregroups' => $lastgroups,
                 'allmygroupsurl' => $CFG->wwwroot.'/local/learningcompanions/group/index.php',
                 'groupmeupurl' => $groupmeupURL,
@@ -128,7 +131,7 @@ class block_learningcompanions_mygroups extends block_base {
                 'no_groups_help' => $noGroupsHelp,
                 'qualifiedasmentor' => $qualifiedAsMentor,
                 'cfg' => $CFG
-                )
+            ]
         );
 
         return $this->content;
