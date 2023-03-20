@@ -24,19 +24,19 @@
 }
 .block_learningcompanions_mygroups_group_center {
     display: block;
-    max-width: 110px;
-    width: 100px;
 }
 .block_learningcompanions_mygroups_group_postinfos {
     margin-left: 10px;
     display: block;
+    position: absolute;
+    right: 10px;
 }
 .block_learningcompanions_mygroups_group_title {
     font-style: italic;
     font-weight: 600;
     text-overflow: ellipsis;
     white-space: nowrap;
-    max-width: 100%;
+    max-width: 125px;
     overflow: hidden;
     display: inline-block;
 }
