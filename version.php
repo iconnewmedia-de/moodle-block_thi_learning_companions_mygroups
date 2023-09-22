@@ -29,3 +29,4 @@ $plugin->release = '1.0.0';
 $plugin->version = 2023092000;
 $plugin->requires = 2019111800;
 $plugin->dependencies = array('local_learningcompanions' => 2022102501);
+$plugin->maturity = MATURITY_RC;
