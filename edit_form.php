@@ -15,23 +15,23 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Form for editing learningcompanions_mygroups block instances.
+ * Form for editing thi_learning_companions_mygroups block instances.
  *
- * @package     block_learningcompanions_mygroups
+ * @package     block_thi_learning_companions_mygroups
  * @copyright   2022 ICON Vernetzte Kommunikation GmbH <info@iconnewmedia.de>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_learningcompanions_mygroups_edit_form extends block_edit_form {
+class block_thi_learning_companions_mygroups_edit_form extends block_edit_form {
 
     /**
-     * Extends the configuration form for block_learningcompanions_mygroups.
+     * Extends the configuration form for block_thi_learning_companions_mygroups.
      *
      * @param MoodleQuickForm $mform The form being built.
      */
     protected function specific_definition($mform) {
         $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
 
-        $mform->addElement('text', 'config_title', get_string('configtitle', 'block_learningcompanions_mygroups'));
+        $mform->addElement('text', 'config_title', get_string('configtitle', 'block_thi_learning_companions_mygroups'));
         $mform->setType('config_title', PARAM_TEXT);
     }
 }

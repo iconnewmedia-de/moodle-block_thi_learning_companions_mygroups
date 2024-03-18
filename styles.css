@@ -1,37 +1,37 @@
-.block_learningcompanions_mygroups_all_groups {
+.block_thi_learning_companions_mygroups_all_groups {
     margin-left: 6px;
 }
-.block_learningcompanions_mygroups_groups {
+.block_thi_learning_companions_mygroups_groups {
     display: block;
 }
-.block_learningcompanions_mygroups_groups {
+.block_thi_learning_companions_mygroups_groups {
     display: block;
 }
-.block_learningcompanions_mygroups_group_content {
+.block_thi_learning_companions_mygroups_group_content {
     display: inline-flex;
     margin-bottom: 20px;
     width: 100%;
 }
-.block_learningcompanions_mygroups_group_picture {
+.block_thi_learning_companions_mygroups_group_picture {
     margin-right: 10px;
 }
-.block_learningcompanions_mygroups_group_picture div {
+.block_thi_learning_companions_mygroups_group_picture div {
     width: 30px;
     height: 30px;
     background-size: cover;
     background-position: center;
     border-radius: 50%;
 }
-.block_learningcompanions_mygroups_group_center {
+.block_thi_learning_companions_mygroups_group_center {
     display: block;
 }
-.block_learningcompanions_mygroups_group_postinfos {
+.block_thi_learning_companions_mygroups_group_postinfos {
     margin-left: 10px;
     display: block;
     position: absolute;
     right: 10px;
 }
-.block_learningcompanions_mygroups_group_title {
+.block_thi_learning_companions_mygroups_group_title {
     font-style: italic;
     font-weight: 600;
     text-overflow: ellipsis;
@@ -40,23 +40,23 @@
     overflow: hidden;
     display: inline-block;
 }
-.block_learningcompanions_mygroups_group_lastpost_time {
+.block_thi_learning_companions_mygroups_group_lastpost_time {
     color: #5AC1A2;
 }
-.block_learningcompanions_mygroups_group_newposts_count {
+.block_thi_learning_companions_mygroups_group_newposts_count {
     margin-top: 3px;
 }
-.block_learningcompanions_mygroups_allgroups_link {
+.block_thi_learning_companions_mygroups_allgroups_link {
     color: #EB9C68;
 }
-.block_learningcompanions_chevron {
+.block_thi_learning_companions_chevron {
     color: #EB9C68;
 }
 
 
-/* In Webseite enthaltenes Stil-Dokument #6 | http://thi406.local/local/learningcompanions/group/search.php */
+/* In Webseite enthaltenes Stil-Dokument #6 | http://thi406.local/local/thi_learning_companions/group/search.php */
 
-.learningcompanions_info {
+.thi_learning_companions_info {
     border: 1px solid var(--secondary);
     margin: 0;
     padding: 5px;

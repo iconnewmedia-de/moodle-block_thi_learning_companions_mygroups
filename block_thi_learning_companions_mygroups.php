@@ -15,16 +15,16 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Block learningcompanions_mygroups is defined here.
+ * Block thi_learning_companions_mygroups is defined here.
  *
- * @package     block_learningcompanions_mygroups
+ * @package     block_thi_learning_companions_mygroups
  * @copyright   2022 ICON Vernetzte Kommunikation GmbH <info@iconnewmedia.de>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_learningcompanions_mygroups extends block_base {
+class block_thi_learning_companions_mygroups extends block_base {
     protected static $groupLimit = 3; // only show that many groups upon loading the page
     public function init() {
-        $this->title = get_string('pluginname', 'block_learningcompanions_mygroups');
+        $this->title = get_string('pluginname', 'block_thi_learning_companions_mygroups');
     }
 
     public function has_config() {
@@ -51,7 +51,7 @@ class block_learningcompanions_mygroups extends block_base {
 
     public function specialization() {
         if (empty($this->config->title)) {
-            $this->title = get_string('pluginname', 'block_learningcompanions_mygroups');
+            $this->title = get_string('pluginname', 'block_thi_learning_companions_mygroups');
         } else {
             $this->title = $this->config->title;
         }
@@ -60,8 +60,8 @@ class block_learningcompanions_mygroups extends block_base {
     public function get_content() {
         global $CFG, $OUTPUT, $USER, $COURSE;
 
-        require_once $CFG->dirroot.'/local/learningcompanions/lib.php';
-        require_once $CFG->dirroot.'/local/learningcompanions/classes/mentors.php';
+        require_once $CFG->dirroot.'/local/thi_learning_companions/lib.php';
+        require_once $CFG->dirroot.'/local/thi_learning_companions/classes/mentors.php';
 
         if ($this->content !== null) {
             return $this->content;
@@ -74,7 +74,7 @@ class block_learningcompanions_mygroups extends block_base {
             return $this->content;
         }
 
-        $groups = \local_learningcompanions\groups::get_groups_of_user($USER->id); // ICTODO: Check why this changes the PAGE context to context_system
+        $groups = \local_thi_learning_companions\groups::get_groups_of_user($USER->id); // ICTODO: Check why this changes the PAGE context to context_system
         $firstgroups = array_values(array_slice($groups, 0, self::$groupLimit));
 
         if (count($groups) > self::$groupLimit) {
@@ -85,7 +85,7 @@ class block_learningcompanions_mygroups extends block_base {
         $moregroupsCount = count($lastgroups);
         $hasmoregroups = $moregroupsCount > 0;
         foreach($groups as $group) {
-            $group->comments_since_last_visit = \local_learningcompanions\groups::count_comments_since_last_visit($group->id);
+            $group->comments_since_last_visit = \local_thi_learning_companions\groups::count_comments_since_last_visit($group->id);
             $group->has_new_comments = $group->comments_since_last_visit > 0;
             $lastcomment = strip_tags($group->get_last_comment(), '<img>');
             // replace any img tags with an img icon
@@ -95,20 +95,20 @@ class block_learningcompanions_mygroups extends block_base {
                 $group->lastcomment = substr($lastcomment, 0, 97).'...';
             }
         }
-        $groupmeupURL = $CFG->wwwroot.'/local/learningcompanions/group/search.php';
+        $groupmeupURL = $CFG->wwwroot.'/local/thi_learning_companions/group/search.php';
         if ($COURSE->id > 1) {
             $groupmeupURL .= '?courseid=' . (int)$COURSE->id;
         }
-        if (has_capability('local/learningcompanions:group_manage', context_system::instance())) {
+        if (has_capability('local/thi_learning_companions:group_manage', context_system::instance())) {
             $mayManageGroups = true;
         } else {
             $mayManageGroups = false;
         }
         $noGroupsHelp = new stdClass();
-        $noGroupsHelp->title = get_string('groups_help_title', 'block_learningcompanions_mygroups');
+        $noGroupsHelp->title = get_string('groups_help_title', 'block_thi_learning_companions_mygroups');
         $noGroupsHelp->url = "";
         $noGroupsHelp->linktext = "";
-        $noGroupsHelp->text = get_string('groups_help_text', 'block_learningcompanions_mygroups');
+        $noGroupsHelp->text = get_string('groups_help_text', 'block_thi_learning_companions_mygroups');
         $noGroupsHelp->icon = [
             "attributes" => [
                 ["name" => "class", "value" => "iconhelp"],
@@ -117,13 +117,13 @@ class block_learningcompanions_mygroups extends block_base {
             ]
         ];
 
-        $qualifiedAsMentor = \local_learningcompanions\mentors::is_qualified_as_mentor($USER->id);
+        $qualifiedAsMentor = \local_thi_learning_companions\mentors::is_qualified_as_mentor($USER->id);
 
-        $this->content->text = $OUTPUT->render_from_template('block_learningcompanions_mygroups/main',
+        $this->content->text = $OUTPUT->render_from_template('block_thi_learning_companions_mygroups/main',
             [
                 'groups' => $firstgroups, // ICTODO: Groups should be sorted by last post
                 'moregroups' => $lastgroups,
-                'allmygroupsurl' => $CFG->wwwroot.'/local/learningcompanions/group/index.php',
+                'allmygroupsurl' => $CFG->wwwroot.'/local/thi_learning_companions/group/index.php',
                 'groupmeupurl' => $groupmeupURL,
                 'moregroupscount' => $moregroupsCount,
                 'hasmoregroups' => $hasmoregroups,

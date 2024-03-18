@@ -17,7 +17,7 @@
 /**
  * Plugin upgrade steps are defined here.
  *
- * @package     block_learningcompanions_mygroups
+ * @package     block_thi_learning_companions_mygroups
  * @category    upgrade
  * @copyright   2022 ICON Vernetzte Kommunikation GmbH <info@iconnewmedia.de>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -26,12 +26,12 @@
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Execute block_learningcompanions_mygroups upgrade from the given old version.
+ * Execute block_thi_learning_companions_mygroups upgrade from the given old version.
  *
  * @param int $oldversion
  * @return bool
  */
-function xmldb_block_learningcompanions_mygroups_upgrade($oldversion) {
+function xmldb_block_thi_learning_companions_mygroups_upgrade($oldversion) {
     global $DB;
 
     $dbman = $DB->get_manager();
