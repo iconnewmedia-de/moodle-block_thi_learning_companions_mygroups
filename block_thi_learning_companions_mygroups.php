@@ -22,7 +22,7 @@
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_thi_learning_companions_mygroups extends block_base {
-    protected static $groupLimit = 3; // only show that many groups upon loading the page
+    protected static $grouplimit = 3; // Only show that many groups upon loading the page.
     public function init() {
         $this->title = get_string('pluginname', 'block_thi_learning_companions_mygroups');
     }
@@ -35,18 +35,18 @@ class block_thi_learning_companions_mygroups extends block_base {
         return false;
     }
 
-    function instance_allow_multiple() {
+    public function instance_allow_multiple() {
         return false;
     }
 
     public function applicable_formats() {
-        return array(
+        return [
             'admin' => true,
             'site' => true,
             'course' => true,
             'mod' => true,
-            'my' => true
-        );
+            'my' => true,
+        ];
     }
 
     public function specialization() {
@@ -60,8 +60,8 @@ class block_thi_learning_companions_mygroups extends block_base {
     public function get_content() {
         global $CFG, $OUTPUT, $USER, $COURSE;
 
-        require_once $CFG->dirroot.'/local/thi_learning_companions/lib.php';
-        require_once $CFG->dirroot.'/local/thi_learning_companions/classes/mentors.php';
+        require_once($CFG->dirroot.'/local/thi_learning_companions/lib.php');
+        require_once($CFG->dirroot.'/local/thi_learning_companions/classes/mentors.php');
 
         if ($this->content !== null) {
             return $this->content;
@@ -74,63 +74,63 @@ class block_thi_learning_companions_mygroups extends block_base {
             return $this->content;
         }
 
-        $groups = \local_thi_learning_companions\groups::get_groups_of_user($USER->id); // ICTODO: Check why this changes the PAGE context to context_system
-        $firstgroups = array_values(array_slice($groups, 0, self::$groupLimit));
+        $groups = \local_thi_learning_companions\groups::get_groups_of_user($USER->id);
+        $firstgroups = array_values(array_slice($groups, 0, self::$grouplimit));
 
-        if (count($groups) > self::$groupLimit) {
-            $lastgroups = array_values(array_slice($groups, self::$groupLimit));
+        if (count($groups) > self::$grouplimit) {
+            $lastgroups = array_values(array_slice($groups, self::$grouplimit));
         } else {
             $lastgroups = [];
         }
-        $moregroupsCount = count($lastgroups);
-        $hasmoregroups = $moregroupsCount > 0;
-        foreach($groups as $group) {
+        $moregroupscount = count($lastgroups);
+        $hasmoregroups = $moregroupscount > 0;
+        foreach ($groups as $group) {
             $group->comments_since_last_visit = \local_thi_learning_companions\groups::count_comments_since_last_visit($group->id);
             $group->has_new_comments = $group->comments_since_last_visit > 0;
             $lastcomment = strip_tags($group->get_last_comment(), '<img>');
-            // replace any img tags with an img icon
+            // Replace any img tags with an img icon.
             $lastcomment = preg_replace('/<img[^>]+>/i', '<i class="fa fa-file-image-o"></i>', $lastcomment);
             $group->lastcomment = $lastcomment;
             if (strlen($lastcomment) > 100) {
                 $group->lastcomment = substr($lastcomment, 0, 97).'...';
             }
         }
-        $groupmeupURL = $CFG->wwwroot.'/local/thi_learning_companions/group/search.php';
+        $groupmeupurl = $CFG->wwwroot.'/local/thi_learning_companions/group/search.php';
         if ($COURSE->id > 1) {
-            $groupmeupURL .= '?courseid=' . (int)$COURSE->id;
+            $groupmeupurl .= '?courseid=' . (int)$COURSE->id;
         }
         if (has_capability('local/thi_learning_companions:group_manage', context_system::instance())) {
-            $mayManageGroups = true;
+            $maymanagegroups = true;
         } else {
-            $mayManageGroups = false;
+            $maymanagegroups = false;
         }
-        $noGroupsHelp = new stdClass();
-        $noGroupsHelp->title = get_string('groups_help_title', 'block_thi_learning_companions_mygroups');
-        $noGroupsHelp->url = "";
-        $noGroupsHelp->linktext = "";
-        $noGroupsHelp->text = get_string('groups_help_text', 'block_thi_learning_companions_mygroups');
-        $noGroupsHelp->icon = [
+        $nogroupshelp = new stdClass();
+        $nogroupshelp->title = get_string('groups_help_title', 'block_thi_learning_companions_mygroups');
+        $nogroupshelp->url = "";
+        $nogroupshelp->linktext = "";
+        $nogroupshelp->text = get_string('groups_help_text', 'block_thi_learning_companions_mygroups');
+        $nogroupshelp->icon = [
             "attributes" => [
                 ["name" => "class", "value" => "iconhelp"],
                 ["name" => "src", "value" => "../../../pix/help.svg"],
-                ["name" => "alt", "value" => "Help icon"]
-            ]
+                ["name" => "alt", "value" => "Help icon"],
+            ],
         ];
 
-        $qualifiedAsMentor = \local_thi_learning_companions\mentors::is_qualified_as_mentor($USER->id);
+        $qualifiedasmentor = \local_thi_learning_companions\mentors::is_qualified_as_mentor($USER->id);
 
         $this->content->text = $OUTPUT->render_from_template('block_thi_learning_companions_mygroups/main',
             [
-                'groups' => $firstgroups, // ICTODO: Groups should be sorted by last post
+                'groups' => $firstgroups,
                 'moregroups' => $lastgroups,
                 'allmygroupsurl' => $CFG->wwwroot.'/local/thi_learning_companions/group/index.php',
-                'groupmeupurl' => $groupmeupURL,
-                'moregroupscount' => $moregroupsCount,
+                'groupmeupurl' => $groupmeupurl,
+                'moregroupscount' => $moregroupscount,
                 'hasmoregroups' => $hasmoregroups,
-                'maymanagegroups' => $mayManageGroups,
-                'no_groups_help' => $noGroupsHelp,
-                'qualifiedasmentor' => $qualifiedAsMentor,
-                'cfg' => $CFG
+                'maymanagegroups' => $maymanagegroups,
+                'no_groups_help' => $nogroupshelp,
+                'qualifiedasmentor' => $qualifiedasmentor,
+                'cfg' => $CFG,
             ]
         );
 
