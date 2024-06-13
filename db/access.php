@@ -24,27 +24,27 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
-    'block/thi_learning_companions_mygroups:myaddinstance' => array(
+$capabilities = [
+    'block/thi_learning_companions_mygroups:myaddinstance' => [
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => array(
-            'user' => CAP_ALLOW
-        ),
+        'archetypes' => [
+            'user' => CAP_ALLOW,
+        ],
 
-        'clonepermissionsfrom' => 'moodle/my:manageblocks'
-    ),
+        'clonepermissionsfrom' => 'moodle/my:manageblocks',
+    ],
 
-    'block/thi_learning_companions_mygroups:addinstance' => array(
+    'block/thi_learning_companions_mygroups:addinstance' => [
         'riskbitmask' => RISK_SPAM | RISK_XSS,
 
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
-        'archetypes' => array(
+        'archetypes' => [
             'editingteacher' => CAP_ALLOW,
-            'manager' => CAP_ALLOW
-        ),
+            'manager' => CAP_ALLOW,
+        ],
 
-        'clonepermissionsfrom' => 'moodle/site:manageblocks'
-    ),
-);
+        'clonepermissionsfrom' => 'moodle/site:manageblocks',
+    ],
+];

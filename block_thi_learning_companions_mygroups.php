@@ -22,23 +22,48 @@
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_thi_learning_companions_mygroups extends block_base {
+    /**
+     * @var int $grouplimit
+     */
     protected static $grouplimit = 3; // Only show that many groups upon loading the page.
+
+    /**
+     * Initializes the block plugin.
+     * @return void
+     * @throws coding_exception
+     */
     public function init() {
         $this->title = get_string('pluginname', 'block_thi_learning_companions_mygroups');
     }
 
+    /**
+     * Tells Moodle that this plugin has its own configuration.
+     * @return bool
+     */
     public function has_config() {
         return true;
     }
 
+    /**
+     * Don't hide header.
+     * @return false
+     */
     public function hide_header() {
         return false;
     }
 
+    /**
+     * Don't allow multiple instances of this block plugin.
+     * @return false
+     */
     public function instance_allow_multiple() {
         return false;
     }
 
+    /**
+     * Tells Moodle where this block plugin may be added to
+     * @return bool[]
+     */
     public function applicable_formats() {
         return [
             'admin' => true,
@@ -49,6 +74,11 @@ class block_thi_learning_companions_mygroups extends block_base {
         ];
     }
 
+    /**
+     * Instance specialisations - allows to override the default title with config
+     * @return void
+     * @throws coding_exception
+     */
     public function specialization() {
         if (empty($this->config->title)) {
             $this->title = get_string('pluginname', 'block_thi_learning_companions_mygroups');
@@ -57,6 +87,13 @@ class block_thi_learning_companions_mygroups extends block_base {
         }
     }
 
+    /**
+     * Returns the HTML for the block
+     * @return stdClass|stdObject|string|null
+     * @throws coding_exception
+     * @throws dml_exception
+     * @throws moodle_exception
+     */
     public function get_content() {
         global $CFG, $OUTPUT, $USER, $COURSE;
 

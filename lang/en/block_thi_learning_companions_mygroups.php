@@ -17,7 +17,7 @@
 /**
  * Plugin strings are defined here.
  *
- * @package     block_block_thi_learning_companions_mygroups
+ * @package     block_thi_learning_companions_mygroups
  * @category    string
  * @copyright   2022 ICON Vernetzte Kommunikation GmbH <info@iconnewmedia.de>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -25,21 +25,21 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Learning Companions - My Groups';
-$string['thi_learning_companions_settings'] = 'Block thi_learning_companions_mygroups';
-$string['configtitle'] = 'Block title';
-
 $string['allgroups'] = 'All groups';
+$string['configtitle'] = 'Block title';
 $string['groupmeup'] = 'Group me up';
-$string['showmore'] = 'Show {$a} more groups';
-$string['showless'] = 'Show less';
-$string['to_admin_area'] = 'Go to admin area';
-$string['no_groups_yet'] = 'You don\'t have any groups yet.';
-$string['groups_help_title'] = 'Hook up with others';
 $string['groups_help_text'] = 'You can join groups to communicate with fellow students. Just click on »group me up« to create or join a group.';
-$string['my_mentors'] = 'My mentors';
-$string['search_for_mentors'] = 'Search for mentors';
-$string['my_questions_to_mentors'] = 'My questions';
-$string['my_mentorship'] = 'My mentorship';
-$string['mentorship_overview'] = 'Go to overview';
+$string['groups_help_title'] = 'Hook up with others';
 $string['mentorship_manage'] = 'Manage mentorship(s)';
+$string['mentorship_overview'] = 'Go to overview';
+$string['my_mentors'] = 'My mentors';
+$string['my_mentorship'] = 'My mentorship';
+$string['my_questions_to_mentors'] = 'My questions';
+$string['no_groups_yet'] = 'You don\'t have any groups yet.';
+$string['pluginname'] = 'Learning Companions - My Groups';
+$string['search_for_mentors'] = 'Search for mentors';
+$string['showless'] = 'Show less';
+$string['showmore'] = 'Show {$a} more groups';
+$string['thi_learning_companions_settings'] = 'Block thi_learning_companions_mygroups';
+$string['to_admin_area'] = 'Go to admin area';
+
